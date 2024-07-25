@@ -3,14 +3,14 @@
 import tkinter as tk
 import tkinter.messagebox as msgbox
 form=tk.Tk()
-form.geometry("500x500")
+form.geometry("1000x500")
 lbluname=tk.Label(form,text="Username",font=("Arial",22,"bold"))
 lbluname.grid(row=0,column=0)
-etuname=tk.Entry(form,width=50,font=("Arial",22,'bold'))
+etuname=tk.Entry(form,width=30,font=("Arial",22,'bold'))
 etuname.grid(row=0,column=1)
 lblpas=tk.Label(form,text="Password",font=("Arial",22,"bold"))
 lblpas.grid(row=1,column=0)
-etpas=tk.Entry(form,width=50,font=("Areal",22,"bold"))
+etpas=tk.Entry(form,width=30,font=("Areal",22,"bold"))
 etpas.grid(row=1,column=1)
 def disp():
     u=etuname.get()
