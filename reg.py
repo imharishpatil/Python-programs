@@ -70,12 +70,15 @@ etpas.grid(row=4, column=1, padx=10, pady=5, sticky="w")
 # Label and radio buttons for gender
 lblgen = tk.Label(entry_frame, text="Gender", font=("Arial", 13, "bold"))
 gendervar = tk.StringVar()
-gendervar.set(None)
+gendervar.set("Select")  # Default value
+
 rbmale = tk.Radiobutton(entry_frame, text="Male", value="male", font=("Arial", 10, "bold"), variable=gendervar)
 rbfemale = tk.Radiobutton(entry_frame, text="Female", value="female", font=("Arial", 10, "bold"), variable=gendervar)
+
 lblgen.grid(row=5, column=0, padx=10, pady=5, sticky="e")
 rbmale.grid(row=5, column=1, padx=5, pady=5, sticky="w")
 rbfemale.grid(row=5, column=1, padx=70, pady=5, sticky="w")
+
 
 # Buttons for save and display
 btnsave = tk.Button(form2, text="Save", fg='red', font=("Arial", 13, "bold"), command=lambda: save())
@@ -91,12 +94,12 @@ tree_frame.grid(row=7, column=0, columnspan=4, padx=20, pady=20, sticky="nsew")
 def save():
     uucms = etuno.get()
     name = etname.get()
-    gender = gendervar.get()
+    gender = gendervar.get()  # Fixed gender variable
     course = crs.get()
     semester = sem.get()
     password = etpas.get()
     
-    if uucms and name and gender and course != "Select" and semester != "Select" and password:
+    if uucms and name and gender != "Select" and course != "Select" and semester != "Select" and password:
         try:
             cur.execute("INSERT INTO student (uucms, name, gender, course, sem, password) VALUES (?, ?, ?, ?, ?, ?)",
                         (uucms, name, gender, course, semester, password))
@@ -106,6 +109,7 @@ def save():
             messagebox.showerror("Error", "UUCMS number already exists")
     else:
         messagebox.showwarning("Input Error", "Please fill all fields correctly")
+
 
 def disp():
     # Clear the previous TreeView content

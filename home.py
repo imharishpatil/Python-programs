@@ -37,6 +37,7 @@ def login():
         msgbox.showerror("Error", "Invalid UUCMS/Password")
 
 def register():
+    form.destroy()
     from reg import disp  # Ensure the 'reg' module and 'disp' function exist
 
 # Button for login
